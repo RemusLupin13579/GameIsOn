@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
@@ -36,6 +39,7 @@ import java.util.Map;
 public class UpdateProfile extends AppCompatActivity {
 
     private  EditText mnewusername;
+    private EditText mnewnumber;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
 
@@ -65,9 +69,38 @@ public class UpdateProfile extends AppCompatActivity {
 
    android.widget.Button mupdateprofilebutton;
    String newname;
+   String newnumber;
 
+    private void updateNumberWithEmail() {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String phoneNumber1 = "+972585313779";
+        String finalPhoneNumber = phoneNumber1;
+        mAuth.createUserWithEmailAndPassword(phoneNumber1 + "@example.com", "password")
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // User account created successfully
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        if (user != null) {
+                            // Set the user's phone number
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(finalPhoneNumber)
+                                    .build();
+                            user.updateProfile(profileUpdates);
+                        }
+                    } else {
+                        // User account creation failed
+                        finish();
+                    }
+                });
 
+    }
 
+    private void updateNumber(String userId, String phoneNumber) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("phoneNumber", phoneNumber);
+        ref.updateChildren(updates);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +112,8 @@ public class UpdateProfile extends AppCompatActivity {
         mgetnewimageinimageview=findViewById(R.id.getnewuserimageinimageview);
         mprogressbarofupdateprofile=findViewById(R.id.progressbarofupdateprofile);
         mnewusername=findViewById(R.id.getnewusername);
+
+        mnewnumber=findViewById(R.id.getnewnumber);
         mupdateprofilebutton=findViewById(R.id.updateprofilebutton);
 
         firebaseAuth=FirebaseAuth.getInstance();
@@ -100,6 +135,7 @@ public class UpdateProfile extends AppCompatActivity {
 
 
         mnewusername.setText(intent.getStringExtra("nameofuser"));
+        mnewusername.setText(intent.getStringExtra("number"));
 
 
 
@@ -109,7 +145,7 @@ public class UpdateProfile extends AppCompatActivity {
         mupdateprofilebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                newnumber=mnewnumber.getText().toString();
                 newname=mnewusername.getText().toString();
                 if(newname.isEmpty())
                 {
@@ -132,7 +168,8 @@ public class UpdateProfile extends AppCompatActivity {
                 }
                 else
                 {
-
+                    updateNumberWithEmail();
+                    updateNumber(firebaseAuth.getUid(), "+972585313779");
                     mprogressbarofupdateprofile.setVisibility(View.VISIBLE);
                     userprofile muserprofile =new userprofile(newname,firebaseAuth.getUid());
                     databaseReference.setValue(muserprofile);
@@ -191,7 +228,7 @@ public class UpdateProfile extends AppCompatActivity {
         userdata.put("image",ImageURIacessToken);
         userdata.put("uid",firebaseAuth.getUid());
         userdata.put("status","Online");
-
+        userdata.put("number",newnumber);
 
         documentReference.set(userdata).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

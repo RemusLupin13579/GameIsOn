@@ -104,7 +104,7 @@ public class chatActivity extends AppCompatActivity {
                 break;
 
             case R.id.settings:
-                Toast.makeText(getApplicationContext(),"Settign is clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Settings is clicked",Toast.LENGTH_SHORT).show();
                 break;
         }
 

@@ -88,7 +88,7 @@
         android:layout_marginTop="30dp"
         android:textColor="@color/white"
         android:paddingLeft="40dp"
-        android:text="Sent OTP"
+        android:text="Send OTP"
         android:textSize="15sp"
         android:paddingRight="40dp"
         android:background="#25d366">
@@ -117,9 +117,10 @@
         android:layout_below="@+id/sendotpbutton"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="173dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="174dp"
         app:srcCompat="@drawable/google_sign" />
 
 

@@ -83,6 +83,9 @@ public class otpAuthentication extends AppCompatActivity {
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                Intent intent1=new Intent(otpAuthentication.this,setProfile.class);
+                startActivity(intent1);
+                finish();
                 if(task.isSuccessful())
                 {
                     mprogressbarofotpauth.setVisibility(View.INVISIBLE);

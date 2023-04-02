@@ -6,6 +6,7 @@ public class firebasemodel {
     String image;
     String uid;
     String status;
+    String number;
 
 
     public firebasemodel(String name, String image, String uid, String status) {
@@ -13,6 +14,13 @@ public class firebasemodel {
         this.image = image;
         this.uid = uid;
         this.status = status;
+    }
+    public firebasemodel(String name, String image, String uid, String status,String number) {
+        this.name = name;
+        this.image = image;
+        this.uid = uid;
+        this.status = status;
+        this.number = number;
     }
 
     public firebasemodel() {
@@ -48,5 +56,13 @@ public class firebasemodel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.name = number;
     }
 }

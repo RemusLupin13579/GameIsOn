@@ -82,33 +82,46 @@
 
 
     <EditText
+        android:id="@+id/getnewusername"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:inputType="textCapWords"
-        android:hint="Enter Your New Name Here"
         android:layout_centerInParent="true"
-        android:id="@+id/getnewusername"
-        android:layout_centerHorizontal="true"
         android:layout_marginLeft="90dp"
         android:layout_marginRight="90dp"
-        >
+        android:hint="Enter Your New Name Here"
+        android:inputType="textCapWords">
 
     </EditText>
 
+    <EditText
+        android:id="@+id/getnewnumber"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/getnewusername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="90dp"
+        android:hint="Enter Your Number Here"
+        android:inputType="textCapWords">
+
+    </EditText>
 
     <android.widget.Button
+        android:id="@+id/updateprofilebutton"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/getnewusername"
-        android:id="@+id/updateprofilebutton"
-        android:layout_marginTop="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="131dp"
         android:background="#25d366"
         android:text="Update Profile"
         android:textColor="@color/white">
 
     </android.widget.Button>
-
 
     <ProgressBar
         android:layout_width="wrap_content"
