@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "984457650273",
+    "project_id": "gameison-cff7a",
+    "storage_bucket": "gameison-cff7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984457650273:android:6b52bd41efca1069d48a20",
+        "android_client_info": {
+          "package_name": "com.example.mychatapptutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984457650273-9vldc82rpkggft18133vnms6bros9mp2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNA0ZLfIXrxJlOgy1XOs8xDmqSnWSluFY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984457650273-9vldc82rpkggft18133vnms6bros9mp2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
